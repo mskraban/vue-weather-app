@@ -1,17 +1,284 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
-h1 {
-    background: red;
-}
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: url("/images/backgrounds/clouds.jpg") no-repeat fixed;
+    background-size: cover;
+    height: 100vh;
+    font-family: 'Lato', sans-serif;
 }
 
-.summary::first-letter {
+.container {
+    max-width: 610px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+
+    .maxWidth {
+        width: 610px;
+    }
+
+    .wrap-bg {
+        padding: 40px 40px 24px;
+        border-radius: 50px;
+        background: rgba(34, 34, 34, 0.5);
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+        /* Note: currently only Safari supports backdrop-filter */
+        backdrop-filter: blur(30px);
+        --webkit-backdrop-filter: blur(30px);
+        /* (plus shape's fill blended on top as a separate layer with 30% opacity) */
+        .row {
+            display: flex;
+            width: 100%;
+            .img {
+                img {
+                    height: auto;
+                    width: 100%;
+                }
+            }
+            .data {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-bottom: 2rem;
+                .temp {
+                    color: white;
+                    font-size: 82px;
+                    font-weight: 900;
+                    text-align: center;
+                    .degrees {
+                        color: rgba(255, 255, 255, 0.7);
+                        font-size: 40px;
+                        margin-left: 5px;
+                        top: -0.7em;
+                        font-weight: 400;
+                    }
+                }
+                .desc {
+                    color: rgba(255, 255, 255, 0.7);
+                    font-size: 28px;
+                    margin-top: -15px;
+                }
+            }
+            .item-wrap {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 2rem;
+                .item-title {
+                    font-weight: 300;
+                    font-size: 22px;
+                    color: #fff;
+                }
+                .item-data {
+                    font-weight: 900;
+                    font-size: 32px;
+                    text-align: left;
+                    color: #fff;
+                    text-align: center;
+                    span {
+                        margin-left: 2px;
+                        font-weight: 400;
+                        font-size: 18px;
+                        color: rgba(255, 255, 255, 0.7);
+                    }
+                }
+            }
+            .hourly {
+                text-align: left;
+                font-weight: bold;
+                font-size: 28px;
+                color: #fff;
+                margin-bottom: 0.5rem;
+            }
+            .hours-wrap {
+                display: flex;
+                transition: all 0.3s ease-in-out;
+                .hour-widget {
+                    width: 90px;
+                    height: 130px;
+                    border-radius: 20px;
+                    background: rgba(0, 0, 0, 0.25);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    .time   {
+                        font-weight: 400;
+                        font-size: 16px;
+                        text-align: center;
+                        color: #fff;
+                    }
+                    .icon {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        img {
+                            height: auto;
+                            width: 50px;
+                        }
+                    }
+                    .temp {
+                        font-weight: 900;
+                        font-size: 22px;
+                        text-align: center;
+                        color: #fff;
+                        sup {
+                            top: -0.4em;
+                            font-weight: 400;
+                        }
+                    }
+                    &:hover {
+                        cursor: grab;
+                    }
+                    &:active {
+                        cursor: grabbing;
+                    }
+                }
+            }
+        }
+        .city {
+            font-size: 42px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+        }
+        .weather-list {
+            .day-row {
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                padding-top: 7px;
+
+                .day-name {
+                    font-weight: 700;
+                    font-size: 28px;
+                    text-align: left;
+                    color: rgba(255, 255, 255, 0.7);
+                }
+                .day-data {
+                    display: flex;
+                    .icon {
+                        width: 50px;
+                        display: flex;
+                        justify-content: center;
+                        img {
+                            height: auto;
+                            width: 100%;
+                        }
+                    }
+                    .temp-high {
+                        font-weight: 700;
+                        font-size: 28px;
+                        text-align: left;
+                        color: #fff;
+                        margin-right: 0.5rem;
+                        width: 50px;
+                        sup {
+                            font-weight: 400;
+                            font-size: 14px;
+                            color: rgba(255, 255, 255, 0.7);
+                            top: -0.7em;
+                        }
+                    }
+                    .temp-low {
+                        font-weight: 700;
+                        font-size: 28px;
+                        text-align: left;
+                        color: rgba(255, 255, 255, 0.7);
+                        width: 50px;
+                        sup {
+                            font-weight: 400;
+                            font-size: 14px;
+                            top: -0.7em;
+                        }
+                    }
+                }
+            }
+            .border-none {
+                border-bottom: none ;
+            }
+        }
+    }
+
+    .grid-icons {
+        .wrap-bg {
+            height: 182px;
+            padding: 20px;
+            .title {
+                font-weight: 700;
+                font-size: 18px;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.7);
+                text-transform: uppercase;
+            }
+            .data {
+                display: flex;
+                justify-content: center;
+                position: relative;
+                margin-top: 0.3rem;
+                .centerIt {
+                    font-weight: 900;
+                    font-size: 66px;
+                    color: #fff;
+                    position: relative;
+                    span {
+                        color: rgba(255, 255, 255, 0.7);
+                        font-weight: 400;
+                        font-size: 24px;
+                        position: absolute;
+                        top: 12px;
+                    }
+                }
+            }
+            .icon {
+                display: flex;
+                justify-content: center;
+                img {
+                    width: 87px;
+                    height: auto;
+                }
+            }
+            .icon-only {
+                display: flex;
+                justify-content: center;
+                margin-top: 0.3rem;
+                img {
+                    height: 115px;
+                    width: auto;
+                }
+            }
+            .value {
+                font-weight: 900;
+                font-size: 20px;
+                text-align: center;
+                color: #fff;
+            }
+        }
+    }
+
+    @supports (backdrop-filter: none) {
+        .wrap-bg {
+            background: rgba(34, 34, 34, 0.3);
+            backdrop-filter: blur(30px);
+        }
+    }
+}
+
+.desc::first-letter {
     text-transform: capitalize;
 }
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+

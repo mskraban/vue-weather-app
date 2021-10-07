@@ -19,7 +19,8 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('weather-app', require('./components/WeatherApp.vue').default);
+//Vue.component('weather-app', require('./components/WeatherApp.vue').default);
+Vue.component('weather-app', require('./components/WeatherAppExtended').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +30,14 @@ Vue.component('weather-app', require('./components/WeatherApp.vue').default);
 
 const app = new Vue({
     el: '#app',
+});
+
+
+var swiper = new Swiper(".mySwiper", {
+  slidesPerView: 5,
+  spaceBetween: 15,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
 });
